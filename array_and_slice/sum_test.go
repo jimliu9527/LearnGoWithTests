@@ -68,7 +68,7 @@ func checkSumInt(t *testing.T, got, want int) {
 
 func checkSumSlice(t *testing.T, got, want []int) {
 	t.Helper()
-	if slices.Equal(got, want) {
+	if !slices.Equal(got, want) {
 		t.Errorf("got is '%v', but want is '%v'", got, want)
 	}
 }
