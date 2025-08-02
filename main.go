@@ -1,12 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"learn-go-with-tests/hello"
-	"learn-go-with-tests/iteration"
+	"learn-go-with-tests/greet"
+	"net/http"
 )
 
+func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
+	greet.Greet(w, "world")
+}
+
 func main() {
-	fmt.Println(hello.Hello("tony", ""))
-	fmt.Println(iteration.Iteration("b", 5))
+	http.ListenAndServe(":5002", http.HandlerFunc(MyGreeterHandler))
+
 }
